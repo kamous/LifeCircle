@@ -27,11 +27,19 @@
     {
         self.data = data;
         self.backgroundColor = color;
-        self.tableView = [[UITableView alloc]initWithFrame:frame];
+        self.tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
         self.tableView.separatorColor = [UIColor colorWithWhite:0 alpha:1];
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        
+       // [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [self.tableView setScrollEnabled:NO];
+        
+        
+       // self.tableView.autoresizingMask &= ~UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview:self.tableView];
         
     }
@@ -40,6 +48,7 @@
 
 -(void)showInView:(UIView*)view animated:(BOOL)animated
 {
+    self.tableView.autoresizesSubviews = NO;
     [view addSubview:self];
     if(animated)
     {
@@ -52,7 +61,7 @@
 {
     self.transform = CGAffineTransformMakeScale(1.3,1.3);
     self.alpha = 0;
-    [UIView animateWithDuration:0.35 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         self.alpha = 1;
         self.transform= CGAffineTransformMakeScale(1, 1);
     }];
@@ -61,7 +70,7 @@
 
 -(void)fadeOut
 {
-    [UIView animateWithDuration:0.35 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         self.transform = CGAffineTransformMakeScale(1.3, 1.3);
     }completion:^(BOOL isFinished){
         if(isFinished)
@@ -85,11 +94,11 @@
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:DROPDOWNCELL_IDENTIFY];
         cell = [tableView dequeueReusableCellWithIdentifier:DROPDOWNCELL_IDENTIFY];
     }
-    cell.textLabel.text = [self.data objectForKey:[NSString stringWithFormat:@"%d",[indexPath row]+1]];
+    cell.textLabel.text = [self.data objectForKey:[NSString stringWithFormat:@"%ld",(long)[indexPath row]]];
     
     [cell.textLabel setTextColor:[UIColor colorWithRed:0 green:0.3 blue:0.9 alpha:1] ];
     [cell.textLabel setFont:[cell.textLabel.font fontWithSize:17]];
-    
+    cell.backgroundColor = [UIColor  colorWithRed:235/255.0 green:235/255.0 blue:241/255.0 alpha:1];
     return cell;
 }
 

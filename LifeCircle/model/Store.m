@@ -7,6 +7,7 @@
 //
 
 #import "Store.h"
+#import "Type.h"
 
 @implementation Store
 
@@ -28,5 +29,19 @@
     return self;
 }
 
+
++(Store*)storeWithJsonDic:(NSDictionary*)dic
+{
+    
+    Store * store = [[Store alloc]initWithName:[dic objectForKey:@"name"]
+                                       storeId:((NSNumber*)[dic objectForKey:@"storeId"]).intValue
+                                          city:nil
+                                         phone:[dic objectForKey:@"phone"]
+                                   locationStr:[dic objectForKey:@"locationStr"]
+                                           lon:((NSNumber*)[dic objectForKey:@"lon"]).doubleValue
+                                           lat:((NSNumber*)[dic objectForKey:@"lat"]).doubleValue
+                     ];
+    return store;
+}
 
 @end

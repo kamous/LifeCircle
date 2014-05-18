@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface InfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@protocol BuyButtonDelegate;
+@class Product;
+@interface InfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,BuyButtonDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) Product* product;
 @end

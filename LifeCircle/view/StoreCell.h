@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface StoreCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *storeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *storeLocationLable;
+@property (weak, nonatomic) IBOutlet UILabel *storeDistanceLabel;
 
 @end

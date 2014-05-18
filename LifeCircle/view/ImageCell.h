@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AsyncImageView;
+
 
 @interface ImageCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIImageView *productImageView;
 
 @end

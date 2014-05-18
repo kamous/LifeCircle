@@ -25,5 +25,8 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)buyClick:(id)sender {
+    [self.delegate buyClick:sender];
+}
 
 @end

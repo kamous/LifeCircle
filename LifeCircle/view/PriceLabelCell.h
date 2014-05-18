@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PriceLabelCell : UITableViewCell
+
+@protocol BuyButtonDelegate <NSObject>
+
+-(void)buyClick:(id)sender;
 
 @end
+
+
+@interface PriceLabelCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property id<BuyButtonDelegate> delegate;
+@end
+
+

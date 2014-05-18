@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>showOrderListByUserId</key>
+	<string>orderAction!showOrderListByUserId</string>
+	<key>buyProduct</key>
+	<string>orderAction!buyProduct</string>
+	<key>showProductsInPage</key>
+	<string>productAction!showProductsInPage</string>
+	<key>showProductById</key>
+	<string>productAction!showProductById</string>
+	<key>baseIP</key>
+	<string>http://127.0.0.1:8080/lifecircle</string>
+	<key>showAllProductsURL</key>
+	<string>productAction!showAllProducts</string>
+	<key>userRegistURL</key>
+	<string>userAction!regist</string>
+	<key>userLoginURL</key>
+	<string>userAction!login</string>
+</dict>
+</plist>

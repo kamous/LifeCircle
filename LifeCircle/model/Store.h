@@ -20,4 +20,6 @@
 
 -(Store*)initWithName:(NSString*)name storeId:(int)storeId city:(City*)city phone:(NSString*)phone locationStr:(NSString*)locationStr lon:(double)lon lat:(double)lat;
 
++(Store*)storeWithJsonDic:(NSDictionary*)dic;
+
 @end

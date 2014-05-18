@@ -7,15 +7,40 @@
 //
 
 #import "AppDelegate.h"
+#import "URLManager.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    //self.reachability = [Reachability reachabilityWithHostName:[[URLManager shareManager] urlStringOfName:@"baseIP" parameters:@""]];
+    self.reachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    [self.reachability startNotifier];
+    
     return YES;
 }
-							
+
+-(void)reachabilityChanged:(NSNotification* )note
+{
+    Reachability* curReachability = [note  object];
+    NSParameterAssert([curReachability isKindOfClass:[Reachability class]]);
+    NetworkStatus status = [curReachability currentReachabilityStatus];
+    
+    if(status == NotReachable)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不可用"
+                                                        message:@"请链接到移动数据网络或WiFi" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+				
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
